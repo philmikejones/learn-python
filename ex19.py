@@ -16,3 +16,8 @@ cheese_and_crackers(num_cheese, num_crackers)
 
 # Can do maths with arguments
 cheese_and_crackers(10 + num_cheese, num_crackers - 7)
+
+# Ask for user input
+num_cheese = int(input("How much cheese?: "))
+num_crackers = int(input("How many boxes of crackers?: "))
+cheese_and_crackers(num_cheese, num_crackers)
