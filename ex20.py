@@ -9,7 +9,7 @@ def rewind(f):
     f.seek(0)
 
 def print_line(line_count, f):
-    print(line_count, f.readline())
+    print(line_count, f.readline(), end = "")
 
 current_file = open(input_file)
 
