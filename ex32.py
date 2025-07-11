@@ -22,6 +22,9 @@ elements = []
 
 # Instead of for loop with append you can use .extend()
 # https://stackoverflow.com/a/42437638
-elements = elements.extend(range(6))
+elements.extend(list(range(6)))
 
+# .extend() adds elements to the list in one dimension
+# .append() adds the LIST to the list (i.e. it becomes nested)
+elements.append(list(range(6, 10)))
 print(elements)
