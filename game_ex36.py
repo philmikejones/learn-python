@@ -66,8 +66,10 @@ rooms = {
 
 player_room = 'outside'
 player_health = int(100)
+player_inventory = ['knife', 'pistol']
+equipped_weapon = None
 
-player_inventory = {
+all_items = {
     'knife' : {
         'description' : 'A combat knife.',
         'type' : 'melee'
@@ -135,11 +137,11 @@ def status_inventory():
     else:
         print("\nYou have the following in your inventory:")
         for item in player_inventory.get('description'):
-        print(f"- {item}")
+            print(f"- {item}")
 
 def print_help():
     print("""
-    e - (e)xplore room
+    e - (e)xplore room        w - check (w)eapon
     g - (g)o to room
     h - (h)elp (this page)
     i - check (i)nventory
@@ -227,6 +229,21 @@ while True:
     elif action == 'p':
         prompt_item = input("> Which item will you pick up? ")
         print(prompt_item)
+    elif action == 'w':
+        if equipped_weapon == None:
+            print("\nYou do not have a weapon equipped.")
+        else:
+            print(f"\nYour {equipped_weapon} is equipped.")
+        print("You can equip the following weapon(s):")
+        for item in player_inventory:
+            print(f"- {item}")
+        prompt_weapon = input("> Equip/change weapon? (y/n) ")
+        if prompt_weapon == "y":
+            which_weapon = input("> Which weapon? ")
+        elif prompt_weapon == "n":
+            continue
+        else:
+            print("Sorry, I didn't understand that. Try again.")
     elif action == 'q':
         exit(0)
     else:
