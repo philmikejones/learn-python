@@ -1,5 +1,5 @@
 import pytest
-from game_functions import enter_room
+import game_ex36.py as game
 
 def test_enter_room():
-    assert enter_room('main hall', 'outside') is 'main hall'
+    assert game.enter_room('main hall', 'outside') is 'main hall'
