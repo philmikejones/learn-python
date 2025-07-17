@@ -65,9 +65,8 @@ rooms = {
 }
 
 player_room = 'outside'
-player_health = int(100)
-player_inventory = ['knife', 'pistol']
-equipped_weapon = None
+player_inventory = {'knife', 'pistol'}
+equipped_weapon  = None
 
 all_items = {
     'knife' : {
@@ -77,8 +76,14 @@ all_items = {
     'pistol' : {
         'description' : 'Your pistol. Takes 15mm rounds',
         'type' : 'weapon'
-    }
+    },
+    'weedkiller' : {
+        'description' : 'A packet of weedkiller that can be mixed with water.',
+        'type' : 'standard'
+    },
 }
+
+print(player_inventory)
 
 player_pistol_ammo = int(15)
 player_shotgun_ammo = int(0)
@@ -132,11 +137,12 @@ def status_room(current_room):
 
 def status_inventory():
     global player_inventory
+    global all_items
     if player_inventory.get() == None:
         print("\nYou are not carrying anything")
     else:
         print("\nYou have the following in your inventory:")
-        for item in player_inventory.get('description'):
+        for item in all_items.get('description'):
             print(f"- {item}")
 
 def print_help():
@@ -224,6 +230,8 @@ while True:
         prompt_room = input("\n> Which room will you go to? ")
         player_room = enter_room(player_room, prompt_room)
         status_room(player_room)
+    elif action == 'i':
+        status_inventory()
     elif action == 'm':
         status_room(player_room)
     elif action == 'p':
