@@ -1,8 +1,11 @@
 from game_rooms import rooms
 
-def standardise_text(text):
+
+def standardise_text(text) -> str:
     """Standardises text by removing spaces and converting to lower case
     to make comparisons/lookups easier"""
+    if not isinstance(text, str):
+        raise TypeError("value provided to standardise_text() was not a string")
     text = text.lower().replace(" ", "")
     return text
 
@@ -14,18 +17,14 @@ def enter_room(current_room, new_room):
     # Check the proposed room can be entered from where the player's current room
     if new_room_flat not in rooms[current_room_flat]["access"]:
         print(f"\nYou cannot enter the {new_room} from {current_room}.")
-        return current_room
-    return new_room
+        return current_room_flat
+    return new_room_flat
 
-def explore_room(current_room, first_entry = False):
+def explore_room(current_room):
     global rooms
     current_room = standardise_text(current_room)
     print_room = rooms.get(current_room).get('label')
     print(f"\nYou are in the {print_room}")
-    if rooms.get(current_room).get('first_entry'):
-        print(rooms.get(current_room).get('special_description'))
-        rooms.get(current_room).update({'trigger_special' : False})
-        return
     print(rooms.get(current_room).get('description'))
     if rooms.get(current_room).get('items') == None:
         print("You do not find any items of interest.")
@@ -36,11 +35,9 @@ def explore_room(current_room, first_entry = False):
 
 def status_room(current_room):
     global rooms
-    # standardise string for easier lookup
     current_room = standardise_text(current_room)
     print_room = rooms[current_room]['label']
     print(f"\nYou are currently in the {print_room}")
-    print(f"debug current_room: {current_room}")
     print("From here, you can go to:")
     for room in rooms.get(current_room).get('access'):
         next_room = rooms.get(room).get('label')
