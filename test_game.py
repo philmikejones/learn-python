@@ -1,5 +1,6 @@
 import pytest
-from game_functions import enter_room
+from game_functions import standardise_text
 
-def test_enter_room():
-    raise NotImplementedError
+def test_standardise_text():
+    assert standardise_text("Main Hall") == "mainhall"
+    assert standardise_text("MainHall") == "mainhall"
