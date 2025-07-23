@@ -25,7 +25,7 @@ def explore_room(current_room):
     current_room = standardise_text(current_room)
     print_room = rooms.get(current_room).get('label')
     print(f"\nYou are in the {print_room}")
-    print(rooms.get(current_room).get('description'))
+    print(rooms.get(current_room).get('desc'))
     if rooms.get(current_room).get('items') == None:
         print("You do not find any items of interest.")
     else:
