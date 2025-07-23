@@ -1,4 +1,6 @@
 import os
+import game_functions as funcs
+import game_rooms as rooms
 
 ## clear the terminal
 ## https://stackoverflow.com/a/2084628
@@ -17,7 +19,7 @@ in a desperate rush for survival.
 You burst into the mansion and slam the doors shut.
 You are safe, for now...""")
 
-player_room = enter_room(player_room, 'Main hall')
+player_room = funcs.enter_room(player_room, 'Main hall')
 input(default_prompt)
 
 # status_room(player_room)
@@ -35,7 +37,7 @@ You follow Barry through one of the side doors
 and find yourself in a grand dining room.""")
 
 input(default_prompt)
-player_room = enter_room(player_room, 'dining room')
+player_room = funcs.enter_room(player_room, 'dining room')
 # status_room(player_room)
 
 print("""\nBarry moves slowly with his weapon drawn. You follow, wondering what kind of nightmare you've found yourself in.
@@ -43,7 +45,7 @@ Barry notices a pool of blood by the fireplace and bends down to investigate. Th
 You hope it isn't Chris's blood. Barry says he will investigate here a bit more and you continue your search. """)
 
 input(default_prompt)
-player_room = enter_room(player_room, 'west ground corridor')
+player_room = funcs.enter_room(player_room, 'west ground corridor')
 
 print("""\nYou are in a long, dimly lit corridor. You hear a crunching so you investigate.
 Round a corner you see a figure hunched over a body. It's clearly wearing a S.T.A.R.S. uniform
@@ -52,7 +54,7 @@ The figure notices you, slowly gets up and starts to shuffle towards you, arms o
 You are so shocked by what you've seen you forget your training and instead turn to flee.""") 
 
 input(default_prompt)
-player_room = enter_room(player_room, 'dining room')
+player_room = funcs.enter_room(player_room, 'dining room')
 
 print("""\nYou burst back in to the dining room with the creature that was eating Kenneth following you.
 You shout at Barry for help. Barry shoots at the creature but it doesn't stop.
@@ -61,7 +63,7 @@ You catch your breath, and decide to report this to Wesker.
 """)
 
 input(default_prompt)
-player_room = enter_room(player_room, 'main hall')
+player_room = funcs.enter_room(player_room, 'main hall')
 print("""\nYou return to the main hall, but Wesker isn't there.
 You and Barry briefly search the Main hall but he's nowhere to be found.
 Barry suggests you split up to look for him before handing you a LOCKPICK.
@@ -75,36 +77,21 @@ default_prompt = "\n> What do you do next? (h for help) "
 while True:
     action = input(default_prompt)
     if action == 'h':
-        print_help()
+        funcs.print_help()
     elif action == 'e':
-        explore_room(player_room)
+        funcs.explore_room(player_room)
     elif action == 'g':
-        status_room(player_room)
+        funcs.status_room(player_room)
         prompt_room = input("\n> Which room will you go to? ")
-        player_room = enter_room(player_room, prompt_room)
+        player_room = funcs.enter_room(player_room, prompt_room)
         status_room(player_room)
     elif action == 'i':
-        status_inventory()
+        funcs.status_inventory()
     elif action == 'm':
-        status_room(player_room)
+        funcs.status_room(player_room)
     elif action == 'p':
         prompt_item = input("> Which item will you pick up? ")
         print(prompt_item)
-    elif action == 'w':
-        if equipped_weapon == None:
-            print("\nYou do not have a weapon equipped.")
-        else:
-            print(f"\nYour {equipped_weapon} is equipped.")
-        print("You can equip the following weapon(s):")
-        for item in player_inventory:
-            print(f"- {item}")
-        prompt_weapon = input("> Equip/change weapon? (y/n) ")
-        if prompt_weapon == "y":
-            which_weapon = input("> Which weapon? ")
-        elif prompt_weapon == "n":
-            continue
-        else:
-            print("Sorry, I didn't understand that. Try again.")
     elif action == 'q':
         exit(0)
     else:

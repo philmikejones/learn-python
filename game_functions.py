@@ -1,3 +1,5 @@
+from game_rooms import rooms
+
 def standardise_text(text):
     """Standardises text by removing spaces and converting to lower case
     to make comparisons/lookups easier"""
