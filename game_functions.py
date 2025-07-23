@@ -1,5 +1,6 @@
 from game_rooms import rooms
-
+from game_items import all_items
+from game_items import player_inventory
 
 def standardise_text(text) -> str:
     """Standardises text by removing spaces and converting to lower case
@@ -46,12 +47,14 @@ def status_room(current_room):
 def status_inventory():
     global player_inventory
     global all_items
-    if player_inventory.get() == None:
+    # check if the list is empty:
+    if not player_inventory:
         print("\nYou are not carrying anything")
-    else:
-        print("\nYou have the following in your inventory:")
-        for item in all_items.get('description'):
-            print(f"- {item}")
+        return
+    print("\nYou have the following in your inventory:")
+    for item in player_inventory:
+        print_item = all_items.get(item).get('desc')
+        print(f"- {print_item}")
 
 def print_help():
     print("""

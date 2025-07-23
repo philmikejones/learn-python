@@ -1,14 +1,18 @@
 import os
 import game_functions as funcs
 import game_rooms as rooms
+from game_items import all_items
+from game_items import player_inventory
 
 ## clear the terminal
 ## https://stackoverflow.com/a/2084628
 os.system('cls' if os.name == 'nt' else 'clear')
 
 
-## Start main game
 player_room = 'outside'
+
+
+## Start main game
 default_prompt = "> Press Enter to continue..."
 
 # status_room(player_room)
