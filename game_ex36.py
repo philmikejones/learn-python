@@ -1,72 +1,10 @@
 import os
+
 # clear the terminal
 # https://stackoverflow.com/a/2084628
 os.system('cls' if os.name == 'nt' else 'clear')
 
-default_prompt = "> Press Enter to continue..."
 
-rooms = {
-    "outside" : {
-      "label"  : "Outside",
-      "key"    : None,
-      "access" : ("mainhall",),  # need to force a tuple or python will iterate over the invididual letters
-      "items"  : None,
-    },
-    "mainhall" : {
-      "label"  : "Main hall",
-      "key"    : None,
-      "access" : ("diningroom", "artroom"),
-      "items"  : None,
-      "description" : "The Main hall of this mysterious mansion. A grand staircase sweeps up to the first floor. It is too dangerous to go back outside."
-    },
-    "diningroom" : {
-      "label"  : "Dining room",
-      "key"    : None,
-      "access" : ("mainhall", "westgroundcorridor"),
-      "items"  : ("Emblem", ),
-      "trigger_special" : False,
-      "description" : "An elaborate dining room with a ticking clock and a fireplace at the far end of the room. There is blood in front of the fireplace."
-    },
-    "westgroundcorridor" : {
-      "label"  : "West Ground Corridor",
-      "key"    : None,
-      "access" : ("diningroom", "musicroom"),
-      "items"  : ("Clip",),
-      "description" : "A long corridor connecting the rooms of the west side of the house. The corpse of Kenneth from Bravo team is at the end of the hallway."
-    },
-    "musicroom" : {
-      "label"  : "Music room",
-      "key"    : "armour",
-      "access" : ("westgroundcorridor",),
-      "items"  : ("Gold emblem", "Music sheet"),
-      "description" : "A music room with grand piano, a drinks bar, a bookcase, and what looks like a gap in the wall..."
-    },
-    "artroom" : {
-      "label"  : "Art room",
-      "key"    : "Armour",
-      "access" : ("mainhall", "eastgroundcorridor"),
-      "items"  : None,
-      "description" : "A room with a marble statue, various paintings, and art supplies tucked around the corner on shelves."
-    },
-    "eastgroundcorridor" : {
-      "label" : "East Ground Corridor",
-      "key"   : None,
-      "access" : ("artroom", "eastgroundrearcorridor"),
-      "items" : ("clip", ),
-      "description" : "A long corridor with ornate silverware and crockery stored in sideboards. The corridor takes you to the back of the mansion."
-    },
-    "eastgroundrearcorridor" : {
-      "label" : "East Ground Rear Corridor",
-      "key"   : None,
-      "access" : ("eastgroundcorridor",),
-      "items": None,
-      "description" : "A winding corridor that takes you to the rear of the mansion. There is a bathroom, a study, and an outside store accessed from this corridor. Otherwise it is pretty unremarkable."
-    },
-}
-
-player_room = 'outside'
-player_inventory = {'knife', 'pistol'}
-equipped_weapon  = None
 
 all_items = {
     'knife' : {
@@ -80,14 +18,8 @@ all_items = {
     'weedkiller' : {
         'description' : 'A packet of weedkiller that can be mixed with water.',
         'type' : 'standard'
-    },
+    }
 }
-
-print(player_inventory)
-
-player_pistol_ammo = int(15)
-player_shotgun_ammo = int(0)
-player_magnum_ammo = int(0)
 
 def standardise_text(text):
     """Standardises text by removing spaces and converting to lower case
@@ -156,7 +88,11 @@ def print_help():
     m - (m)ap""")
 
 
+
 ## Start main game
+default_prompt = "> Press Enter to continue..."
+player_room = 'outside'
+
 # status_room(player_room)
 print("""\nYou are in the forest searching for S.T.A.R.S. Bravo team
 when you are ambushed by a pack of dogs.
