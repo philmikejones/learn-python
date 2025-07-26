@@ -1,6 +1,6 @@
 import os
 import game_functions as funcs
-import game_rooms as rooms
+from game_rooms import all_rooms
 from game_items import all_items
 from game_items import player_inventory
 
@@ -10,7 +10,6 @@ os.system('cls' if os.name == 'nt' else 'clear')
 
 
 player_room = 'outside'
-
 
 ## Start main game
 default_prompt = "> Press Enter to continue..."

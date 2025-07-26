@@ -1,5 +1,5 @@
 import pytest
-from game_rooms import rooms
+from game_rooms import all_rooms
 from game_functions import standardise_text
 from game_functions import enter_room
 

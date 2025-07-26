@@ -1,4 +1,4 @@
-rooms = {
+all_rooms = {
     "outside" : {
       "label"  : "Outside",
       "locked" : None,

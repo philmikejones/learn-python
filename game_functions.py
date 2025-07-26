@@ -1,4 +1,4 @@
-from game_rooms import rooms
+from game_rooms import all_rooms
 from game_items import all_items
 from game_items import player_inventory
 
@@ -10,8 +10,7 @@ def standardise_text(text) -> str:
     text = text.lower().replace(" ", "")
     return text
 
-def enter_room(current_room, new_room):
-    global rooms
+def enter_room(current_room, new_room, rooms = all_rooms):
     # You need new variables to preserve the label formats for printing
     current_room_flat = standardise_text(current_room)
     new_room_flat = standardise_text(new_room)
