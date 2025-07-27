@@ -2,7 +2,15 @@ from game_rooms import all_rooms
 from game_items import all_items
 from game_items import player_inventory
 
+def inventory_add(item, inventory = player_inventory):
+    """Adds the specified item to the player's inventory
+    after first checking if there is space"""
+    if inventory_full(inventory):
+        return inventory
+
 def inventory_full(inventory = player_inventory) -> bool:
+    """Helper function to check if your inventory is full
+    before adding items. Returns True if full and False if there is space"""
     if not isinstance(inventory, list):
         raise TypeError("Non list supplied to inventory_full()")
     if len(inventory) >= 8:
