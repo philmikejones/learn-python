@@ -2,6 +2,7 @@ import pytest
 from game_rooms import all_rooms
 from game_functions import standardise_text
 from game_functions import enter_room
+from game_functions import inventory_full
 
 def test_standardise_text():
     assert standardise_text("Main Hall") == "mainhall"
@@ -14,3 +15,11 @@ def test_enter_room():
     assert enter_room("outside", "main hall") == "mainhall"
     # Cannot get to dining room from outside
     assert enter_room("outside", "dining room") == "outside"
+
+def test_inventory_full():
+    test_inventory = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']
+    assert inventory_full(inventory = test_inventory)
+    test_inventory = ['a']
+    assert not inventory_full(inventory = test_inventory)
+    with pytest.raises(TypeError):
+        inventory_full(inventory = 'not a list')

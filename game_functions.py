@@ -2,6 +2,13 @@ from game_rooms import all_rooms
 from game_items import all_items
 from game_items import player_inventory
 
+def inventory_full(inventory = player_inventory) -> bool:
+    if not isinstance(inventory, list):
+        raise TypeError("Non list supplied to inventory_full()")
+    if len(inventory) >= 8:
+        return True
+    return False
+
 def standardise_text(text) -> str:
     """Standardises text by removing spaces and converting to lower case
     to make comparisons/lookups easier"""
@@ -10,7 +17,7 @@ def standardise_text(text) -> str:
     text = text.lower().replace(" ", "")
     return text
 
-def enter_room(current_room, new_room, rooms = all_rooms):
+def enter_room(current_room, new_room, rooms = all_rooms) -> str:
     # You need new variables to preserve the label formats for printing
     current_room_flat = standardise_text(current_room)
     new_room_flat = standardise_text(new_room)
@@ -20,8 +27,7 @@ def enter_room(current_room, new_room, rooms = all_rooms):
         return current_room_flat
     return new_room_flat
 
-def explore_room(current_room):
-    global rooms
+def explore_room(current_room, rooms = all_rooms):
     current_room = standardise_text(current_room)
     print_room = rooms.get(current_room).get('label')
     print(f"\nYou are in the {print_room}")
@@ -33,8 +39,7 @@ def explore_room(current_room):
         for item in rooms.get(current_room).get('items'):
             print(f"- {item}")
 
-def status_room(current_room):
-    global rooms
+def status_room(current_room, rooms = all_rooms):
     current_room = standardise_text(current_room)
     print_room = rooms[current_room]['label']
     print(f"\nYou are currently in the {print_room}")
@@ -43,17 +48,15 @@ def status_room(current_room):
         next_room = rooms.get(room).get('label')
         print(f"- {next_room}")
 
-def status_inventory():
-    global player_inventory
-    global all_items
+def status_inventory(inventory = player_inventory, item_list = all_items):
     # check if the list is empty:
     if not player_inventory:
         print("\nYou are not carrying anything")
-        return
-    print("\nYou have the following in your inventory:")
-    for item in player_inventory:
-        print_item = all_items.get(item).get('desc')
-        print(f"- {print_item}")
+    else:
+        print("\nYou have the following in your inventory:")
+        for item in player_inventory:
+            print_item = all_items.get(item).get('desc')
+            print(f"- {print_item}")
 
 def print_help():
     print("""
