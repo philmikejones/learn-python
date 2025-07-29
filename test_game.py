@@ -7,8 +7,12 @@ from game_functions import inventory_add
 
 def test_inventory_add():
     test_inventory = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']
-    test = inventory_add('aardvark', test_inventory)
+    test = inventory_add('another_item', test_inventory)
     assert len(test) == 8
+    test_inventory = []
+    test = inventory_add('another_item', test_inventory)
+    assert len(test) == 1
+    assert test == ['another_item']
 
 def test_standardise_text():
     assert standardise_text("Main Hall") == "mainhall"

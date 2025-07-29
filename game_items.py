@@ -12,5 +12,9 @@ all_items = {
     'weedkiller' : {
         'desc' : 'A packet of weedkiller that can be mixed with water.',
         'type' : 'standard'
-    }
+    },
+    'emblem' : {
+        'desc' : 'A wooden emblem in the shape of a shield, found above the dining room fire place. There are marks on the back.',
+        'type' : 'standard'
+    },
 }

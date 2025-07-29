@@ -2,11 +2,22 @@ from game_rooms import all_rooms
 from game_items import all_items
 from game_items import player_inventory
 
-def inventory_add(item, inventory = player_inventory):
+def print_inventory_add(new_item, inventory = player_inventory):
+    if inventory_full(inventory):
+        print("Your inventory is full. You cannot carry any more items.")
+    elif not inventory_full(inventory):
+        inventory_add(new_item, inventory)
+        print(f"You pick up the {new_item}")
+    else:
+        print("Debug: problem with print_inventory_add()")
+
+def inventory_add(new_item, inventory = player_inventory):
     """Adds the specified item to the player's inventory
     after first checking if there is space"""
     if inventory_full(inventory):
         return inventory
+    inventory.append(new_item)
+    return inventory
 
 def inventory_full(inventory = player_inventory) -> bool:
     """Helper function to check if your inventory is full
