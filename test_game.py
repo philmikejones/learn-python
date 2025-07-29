@@ -4,6 +4,11 @@ from game_functions import standardise_text
 from game_functions import enter_room
 from game_functions import inventory_full
 from game_functions import inventory_add
+from game_functions import remove_room_item
+
+def test_remove_room_item():
+    remove_room_item(room = 'diningroom', item = 'emblem')
+    assert all_rooms.get('diningroom').get('items') == []
 
 def test_inventory_add():
     test_inventory = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']

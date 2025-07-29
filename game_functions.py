@@ -2,6 +2,9 @@ from game_rooms import all_rooms
 from game_items import all_items
 from game_items import player_inventory
 
+def remove_room_item(room, item):
+    raise NotImplementedError
+
 def print_inventory_add(new_item, inventory = player_inventory):
     if inventory_full(inventory):
         print("Your inventory is full. You cannot carry any more items.")
