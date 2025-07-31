@@ -2,7 +2,7 @@ all_rooms = {
     "outside" : {
       "label"  : "Outside",
       "locked" : None,
-      "access" : ("mainhall",),  # need to force a tuple or python will iterate over the invididual letters
+      "access" : ["mainhall",],  # need to force a list or python will iterate over the invididual letters
       "items"  : None,
     },
     "mainhall" : {

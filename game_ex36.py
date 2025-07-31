@@ -89,7 +89,7 @@ while True:
     elif action == 'p':
         prompt_item = input("> Which item will you pick up? ")
         print(prompt_item)
-        funcs.inventory_add(new_item = prompt_item, inventory = player_inventory)
+        funcs.print_inventory_add(new_item = prompt_item, inventory = player_inventory)
     elif action == 'q':
         exit(0)
     else:

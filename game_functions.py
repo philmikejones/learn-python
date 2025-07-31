@@ -77,8 +77,9 @@ def status_inventory(inventory = player_inventory, item_list = all_items):
     else:
         print("\nYou have the following in your inventory:")
         for item in player_inventory:
-            print_item = all_items.get(item).get('desc')
-            print(f"- {print_item}")
+            print_item_label = all_items.get(item).get('label')
+            print_item_desc  = all_items.get(item).get('desc')
+            print(f"- {print_item_label}: {print_item_desc}")
 
 def print_help():
     print("""
