@@ -2,8 +2,10 @@ from game_rooms import all_rooms
 from game_items import all_items
 from game_items import player_inventory
 
-def remove_room_item(room, item):
-    raise NotImplementedError
+def remove_room_item(item_taken, current_room, rooms_list = all_rooms) -> list:
+    room_items = rooms_list.get(current_room).get('items')
+    room_items.remove(item_taken)
+    return room_items
 
 def print_inventory_add(new_item, inventory = player_inventory):
     if inventory_full(inventory):
@@ -54,7 +56,7 @@ def explore_room(current_room, rooms = all_rooms):
     print_room = rooms.get(current_room).get('label')
     print(f"\nYou are in the {print_room}")
     print(rooms.get(current_room).get('desc'))
-    if rooms.get(current_room).get('items') == None:
+    if rooms.get(current_room).get('items') == None or rooms.get(current_room).get('items') == []:
         print("You do not find any items of interest.")
     else:
         print("\nYou search the room and find the following items:")

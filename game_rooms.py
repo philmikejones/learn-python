@@ -16,7 +16,7 @@ all_rooms = {
       "label"  : "Dining room",
       "locked" : None,
       "access" : ("mainhall", "westgroundcorridor"),
-      "items"  : ("Emblem", ),
+      "items"  : ["emblem", ],
       "desc"   : "An elaborate dining room with a ticking clock and a fireplace at the far end of the room. There is blood in front of the fireplace.",
       "trigger_special" : False,
     },
@@ -24,14 +24,14 @@ all_rooms = {
       "label"  : "West Ground Corridor",
       "locked" : None,
       "access" : ("diningroom", "musicroom"),
-      "items"  : ("Clip",),
+      "items"  : ["clip",],
       "desc"   : "A long corridor connecting the rooms of the west side of the house. The corpse of Kenneth from Bravo team is at the end of the hallway."
     },
     "musicroom" : {
       "label"  : "Music room",
       "locked" : "armour",
       "access" : ("westgroundcorridor",),
-      "items"  : ("Gold emblem", "Music sheet"),
+      "items"  : ["goldemblem", "musicsheet"],
       "desc  " : "A music room with grand piano, a drinks bar, a bookcase, and what looks like a gap in the wall..."
     },
     "artroom" : {
@@ -45,7 +45,7 @@ all_rooms = {
       "label"  : "East Ground Corridor",
       "locked" : None,
       "access" : ("artroom", "eastgroundrearcorridor"),
-      "items"  : ("clip", ),
+      "items"  : ["clip", ],
       "desc  " : "A long corridor with ornate silverware and crockery stored in sideboards. The corridor takes you to the back of the mansion."
     },
     "eastgroundrearcorridor" : {

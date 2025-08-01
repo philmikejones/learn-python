@@ -7,8 +7,8 @@ from game_functions import inventory_add
 from game_functions import remove_room_item
 
 def test_remove_room_item():
-    remove_room_item(room = 'diningroom', item = 'emblem')
-    assert all_rooms.get('diningroom').get('items') == []
+    dining_room_items = remove_room_item(item_taken = 'emblem', current_room = 'diningroom')
+    assert dining_room_items == []
 
 def test_inventory_add():
     test_inventory = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']

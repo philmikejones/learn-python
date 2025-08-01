@@ -90,6 +90,7 @@ while True:
         prompt_item = input("> Which item will you pick up? ")
         print(prompt_item)
         funcs.print_inventory_add(new_item = prompt_item, inventory = player_inventory)
+        funcs.remove_room_item(prompt_item, current_room = player_room, rooms_list = all_rooms)
     elif action == 'q':
         exit(0)
     else:
