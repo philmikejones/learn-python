@@ -45,6 +45,14 @@ def enter_room(current_room, new_room, rooms = all_rooms) -> str:
     # You need new variables to preserve the label formats for printing
     current_room_flat = standardise_text(current_room)
     new_room_flat = standardise_text(new_room)
+    if new_room_flat == "outside":
+        if rooms.get('outside').get('trigger_special'):
+            print(rooms.get('outside').get('desc_special'))
+            rooms.get('outside').update(trigger_special = False)
+            return current_room_flat
+        elif not rooms.get('outside').get('trigger_special'):
+            print(rooms.get('outside').get('desc'))
+            return current_room_flat
     # Check the proposed room can be entered from where the player's current room
     if new_room_flat not in rooms[current_room_flat]["access"]:
         print(f"\nYou cannot enter the {new_room} from {current_room}.")

@@ -4,11 +4,14 @@ all_rooms = {
       "locked" : None,
       "access" : ["mainhall",],  # need to force a list or python will iterate over the invididual letters
       "items"  : None,
+      "desc"   : "It's too dangerous to go outside",
+      "desc_special" : "You open the mansion door to see if you can make it to safety. One of the dogs that chased you leaps at you and you only just manage to slam the door shut in time. Going back outside is not an option.",
+      "trigger_special" : True,
     },
     "mainhall" : {
       "label"  : "Main hall",
       "locked" : None,
-      "access" : ("diningroom", "artroom"),
+      "access" : ["diningroom", "artroom", "outside"],
       "items"  : None,
       "desc"   : "The Main hall of this mysterious mansion. A grand staircase sweeps up to the first floor. It is too dangerous to go back outside."
     },
