@@ -32,7 +32,7 @@ all_rooms = {
     },
     "musicroom" : {
       "label"  : "Music room",
-      "locked" : "armour",
+      "locked" : "lockpick",
       "access" : ("westgroundcorridor",),
       "items"  : ["goldemblem", "musicsheet"],
       "desc  " : "A music room with grand piano, a drinks bar, a bookcase, and what looks like a gap in the wall..."

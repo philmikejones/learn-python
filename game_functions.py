@@ -43,7 +43,7 @@ def standardise_text(text) -> str:
     text = text.lower().replace(" ", "")
     return text
 
-def enter_room(current_room, new_room, rooms = all_rooms) -> str:
+def enter_room(current_room, new_room, rooms = all_rooms, keys = player_keys) -> str:
     # You need new variables to preserve the label formats for printing
     current_room_flat = standardise_text(current_room)
     new_room_flat = standardise_text(new_room)
@@ -61,8 +61,15 @@ def enter_room(current_room, new_room, rooms = all_rooms) -> str:
         return current_room_flat
     # check the player doesn't need a key or lockpick
     if rooms[new_room_flat]['locked'] is not None:
-        print("You need a key to enter that room")
-        return current_room_flat
+        if rooms[new_room_flat]['locked'] not in keys:
+            needed_key = rooms[new_room_flat]['locked']
+            print(f"\nYou need the {needed_key} to enter the {new_room}.")
+            return current_room_flat
+        # unlock if they have the needed key
+        elif rooms[new_room_flat]['locked'] in keys:
+            print(f"\nYou unlocked the {new_room}.")
+            rooms[new_room_flat].update(locked = None)
+            return new_room_flat
     return new_room_flat
 
 def explore_room(current_room, rooms = all_rooms):
