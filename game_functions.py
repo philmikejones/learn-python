@@ -1,6 +1,7 @@
 from game_rooms import all_rooms
 from game_items import all_items
 from game_items import player_inventory
+from game_items import player_keys
 
 def remove_room_item(item_taken, current_room, rooms_list = all_rooms) -> list:
     room_items = rooms_list.get(current_room).get('items')
@@ -94,6 +95,10 @@ def status_inventory(inventory = player_inventory, item_list = all_items):
             print_item_label = all_items.get(item).get('label')
             print_item_desc  = all_items.get(item).get('desc')
             print(f"- {print_item_label}: {print_item_desc}")
+    print("\nYou have the following keys:")
+    for key in player_keys:
+        print(f"- {key}")
+
 
 def print_help():
     print("""
