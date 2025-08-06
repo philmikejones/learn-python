@@ -1,5 +1,6 @@
 from game_rooms import all_rooms
 from game_items import all_items
+from game_items import all_keys
 from game_items import player_inventory
 from game_items import player_keys
 
@@ -85,7 +86,8 @@ def status_room(current_room, rooms = all_rooms):
         next_room = rooms.get(room).get('label')
         print(f"- {next_room}")
 
-def status_inventory(inventory = player_inventory, item_list = all_items):
+def status_inventory(inventory = player_inventory, keys = player_keys,
+                        item_list = all_items, key_list = all_keys):
     # check if the list is empty:
     if not player_inventory:
         print("\nYou are not carrying anything")
@@ -97,7 +99,9 @@ def status_inventory(inventory = player_inventory, item_list = all_items):
             print(f"- {print_item_label}: {print_item_desc}")
     print("\nYou have the following keys:")
     for key in player_keys:
-        print(f"- {key}")
+        key_label = key_list.get(key).get('label')
+        key_desc = key_list.get(key).get('desc')
+        print(f"- {key_label}: {key_desc}")
 
 
 def print_help():

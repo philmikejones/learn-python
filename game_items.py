@@ -23,3 +23,14 @@ all_items = {
         'type'  : 'standard'
     },
 }
+
+all_keys = {
+    'lockpick' : {
+        'label' : 'Lockpick',
+        'desc' : 'Your trusty lockpick, capable of picking simple locks.'
+    },
+    'armour' : {
+        'label' : 'Armour',
+        'desc' : 'A mansion key with an engraving of armour.'
+    }
+}
