@@ -3,6 +3,7 @@ import game_functions as funcs
 from game_rooms import all_rooms
 from game_items import all_items
 from game_items import player_inventory
+from game_items import player_keys
 
 ## clear the terminal
 ## https://stackoverflow.com/a/2084628
@@ -68,6 +69,7 @@ He say's he'll go back to the dining room, and you will start looking
 on the east side of the house (ART ROOM).
 Barry turns and leaves.""")
 
+player_keys.append("lockpick")
 
 default_prompt = "\n> What do you do next? (h for help) "
 

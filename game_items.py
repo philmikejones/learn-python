@@ -1,4 +1,5 @@
 player_inventory = ['knife', 'pistol']
+player_keys = []
 
 all_items = {
     'knife' : {
