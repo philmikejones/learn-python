@@ -57,6 +57,10 @@ def enter_room(current_room, new_room, rooms = all_rooms) -> str:
     if new_room_flat not in rooms[current_room_flat]["access"]:
         print(f"\nYou cannot enter the {new_room} from {current_room}.")
         return current_room_flat
+    # check the player doesn't need a key or lockpick
+    if rooms[new_room_flat]['locked'] is not None:
+        print("You need a key to enter that room")
+        return current_room_flat
     return new_room_flat
 
 def explore_room(current_room, rooms = all_rooms):
@@ -64,7 +68,7 @@ def explore_room(current_room, rooms = all_rooms):
     print_room = rooms.get(current_room).get('label')
     print(f"\nYou are in the {print_room}")
     print(rooms.get(current_room).get('desc'))
-    if rooms.get(current_room).get('items') == None or rooms.get(current_room).get('items') == []:
+    if rooms.get(current_room).get('items') is None or rooms.get(current_room).get('items') == []:
         print("You do not find any items of interest.")
     else:
         print("\nYou search the room and find the following items:")
